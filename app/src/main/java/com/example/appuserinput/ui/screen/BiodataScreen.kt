@@ -150,6 +150,22 @@ fun BiodataCard(modifier: Modifier = Modifier) {
                 keyboardType = KeyboardType.Email,
                 modifier = Modifier.fillMaxWidth()
             )
+
+            Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))) {
+                DatePickerField(
+                    value = birthDate,
+                    label = stringResource(R.string.hint_birth_date),
+                    onClick = { showDatePicker = true },
+                    modifier = Modifier.weight(1f)
+                )
+                ExperienceDropdown(
+                    selected = experience,
+                    onSelected = { experience = it },
+                    label = stringResource(R.string.hint_experience),
+                    options = stringArrayResource(R.array.experience_options),
+                    modifier = Modifier.weight(1f)
+                )
+            }
             // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
         }
