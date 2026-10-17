@@ -166,6 +166,23 @@ fun BiodataCard(modifier: Modifier = Modifier) {
                     modifier = Modifier.weight(1f)
                 )
             }
+
+            Text(
+                text = stringResource(R.string.label_skill),
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.Bold
+            )
+            SkillRow {
+                skills.forEach { skillRes ->
+                    SkillCheckbox(
+                        label = stringResource(skillRes),
+                        checked = selectedSkills.contains(skillRes),
+                        onCheckedChange = { checked ->
+                            if (checked) selectedSkills.add(skillRes) else selectedSkills.remove(skillRes)
+                        }
+                    )
+                }
+            }
             // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
         }
