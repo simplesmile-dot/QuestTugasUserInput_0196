@@ -206,10 +206,33 @@ fun BiodataCard(modifier: Modifier = Modifier) {
             ) {
                 Text(stringResource(R.string.btn_proceed))
             }
-            // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
         }
     }
 
-    // DIALOG TANGGAL DITAMBAHKAN DI SINI (commit 29)
+    if (showDatePicker) {
+        val dateState = rememberDatePickerState()
+        DatePickerDialog(
+            onDismissRequest = { showDatePicker = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    dateState.selectedDateMillis?.let { millis ->
+                        val formatter = SimpleDateFormat(
+                            context.getString(R.string.date_format),
+                            Locale.getDefault()
+                        ).apply {
+                            timeZone = TimeZone.getTimeZone(context.getString(R.string.timezone_utc))
+                        }
+                        birthDate = formatter.format(millis)
+                    }
+                    showDatePicker = false
+                }) { Text(stringResource(R.string.btn_ok)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDatePicker = false }) {
+                    Text(stringResource(R.string.btn_cancel))
+                }
+            }
+        ) { DatePicker(state = dateState) }
+    }
 }
