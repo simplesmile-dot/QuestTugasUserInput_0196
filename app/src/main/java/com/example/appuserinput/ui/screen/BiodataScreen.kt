@@ -142,6 +142,14 @@ fun BiodataCard(modifier: Modifier = Modifier) {
                     modifier = Modifier.weight(1f)
                 )
             }
+
+            FormTextField(
+                value = email,
+                onValueChange = { email = it },
+                label = stringResource(R.string.hint_email),
+                keyboardType = KeyboardType.Email,
+                modifier = Modifier.fillMaxWidth()
+            )
             // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
         }
