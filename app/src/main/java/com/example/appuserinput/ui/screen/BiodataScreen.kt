@@ -89,6 +89,9 @@ fun BiodataCard(modifier: Modifier = Modifier) {
     var showDatePicker by rememberSaveable { mutableStateOf(false) }
     val selectedSkills = remember { mutableStateListOf<Int>() }
     val skills = listOf(R.string.skill_android, R.string.skill_uiux, R.string.skill_web)
+    val isFormValid = firstName.isNotBlank() && lastName.isNotBlank() &&
+            email.isNotBlank() && birthDate.isNotBlank() &&
+            experience.isNotBlank() && selectedSkills.isNotEmpty()
 
     Box(
         modifier = modifier
