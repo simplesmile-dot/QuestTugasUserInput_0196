@@ -64,3 +64,38 @@ fun FormTextField(
         modifier = modifier
     )
 }
+
+@Composable
+fun DatePickerField(
+    value: String,
+    label: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val interaction = remember { MutableInteractionSource() }
+    LaunchedEffect(interaction) {
+        interaction.interactions.collect {
+            if (it is PressInteraction.Release) onClick()
+        }
+    }
+    OutlinedTextField(
+        value = value,
+        onValueChange = {},
+        readOnly = true,
+        singleLine = true,
+        label = { Text(label, style = MaterialTheme.typography.bodySmall) },
+        trailingIcon = {
+            IconButton(onClick = onClick) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_calendar),
+                    contentDescription = stringResource(R.string.cd_calendar),
+                    modifier = Modifier.size(dimensionResource(R.dimen.icon_size))
+                )
+            }
+        },
+        shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
+        colors = fieldColors(),
+        interactionSource = interaction,
+        modifier = modifier
+    )
+}
