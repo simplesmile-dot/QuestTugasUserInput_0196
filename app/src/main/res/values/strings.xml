@@ -22,4 +22,10 @@
     <string name="cd_header">Gambar header</string>
     <string name="cd_calendar">Pilih tanggal</string>
 
+    <string-array name="experience_options">
+        <item>Pemula</item>
+        <item>Menengah</item>
+        <item>Mahir</item>
+    </string-array>
+
 </resources>
