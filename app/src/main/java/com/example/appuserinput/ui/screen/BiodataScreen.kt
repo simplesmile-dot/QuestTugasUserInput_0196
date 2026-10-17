@@ -127,6 +127,21 @@ fun BiodataCard(modifier: Modifier = Modifier) {
                     textAlign = TextAlign.Center
                 )
             }
+
+            Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))) {
+                FormTextField(
+                    value = firstName,
+                    onValueChange = { firstName = it },
+                    label = stringResource(R.string.hint_first_name),
+                    modifier = Modifier.weight(1f)
+                )
+                FormTextField(
+                    value = lastName,
+                    onValueChange = { lastName = it },
+                    label = stringResource(R.string.hint_last_name),
+                    modifier = Modifier.weight(1f)
+                )
+            }
             // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
         }
