@@ -109,6 +109,24 @@ fun BiodataCard(modifier: Modifier = Modifier) {
             modifier = Modifier.verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
         ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = stringResource(R.string.form_title),
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = colorResource(R.color.purple_title),
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = stringResource(R.string.form_subtitle),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = colorResource(R.color.text_hint),
+                    textAlign = TextAlign.Center
+                )
+            }
             // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
         }
