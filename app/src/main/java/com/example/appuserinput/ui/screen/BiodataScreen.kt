@@ -81,6 +81,14 @@ fun BiodataScreen() {
 fun BiodataCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val cardShape = RoundedCornerShape(dimensionResource(R.dimen.card_corner))
+    var firstName by rememberSaveable { mutableStateOf("") }
+    var lastName by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
+    var birthDate by rememberSaveable { mutableStateOf("") }
+    var experience by rememberSaveable { mutableStateOf("") }
+    var showDatePicker by rememberSaveable { mutableStateOf(false) }
+    val selectedSkills = remember { mutableStateListOf<Int>() }
+    val skills = listOf(R.string.skill_android, R.string.skill_uiux, R.string.skill_web)
 
     Box(
         modifier = modifier
