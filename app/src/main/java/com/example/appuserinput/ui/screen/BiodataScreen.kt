@@ -183,6 +183,29 @@ fun BiodataCard(modifier: Modifier = Modifier) {
                     )
                 }
             }
+
+            Button(
+                onClick = {
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.msg_success, firstName, lastName),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
+                enabled = isFormValid,
+                shape = RoundedCornerShape(dimensionResource(R.dimen.button_corner)),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(R.color.purple_button),
+                    contentColor = colorResource(R.color.white),
+                    disabledContainerColor = colorResource(R.color.button_disabled_container),
+                    disabledContentColor = colorResource(R.color.button_disabled_content)
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(R.dimen.button_height))
+            ) {
+                Text(stringResource(R.string.btn_proceed))
+            }
             // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
         }
