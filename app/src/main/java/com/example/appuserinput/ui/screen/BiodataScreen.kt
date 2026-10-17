@@ -72,5 +72,36 @@ fun BiodataScreen() {
                     .height(dimensionResource(R.dimen.header_height))
             )
         }
+        // Box mengapung di atas Scaffold
+        BiodataCard(modifier = Modifier.align(Alignment.BottomCenter))
     }
+}
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BiodataCard(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+    val cardShape = RoundedCornerShape(dimensionResource(R.dimen.card_corner))
+
+    Box(
+        modifier = modifier
+            .padding(
+                start = dimensionResource(R.dimen.card_margin_horizontal),
+                end = dimensionResource(R.dimen.card_margin_horizontal),
+                bottom = dimensionResource(R.dimen.card_margin_bottom)
+            )
+            .fillMaxWidth()
+            .shadow(dimensionResource(R.dimen.card_elevation), cardShape)
+            .background(colorResource(R.color.white), cardShape)
+            .padding(dimensionResource(R.dimen.card_padding))
+    ) {
+        Column(
+            modifier = Modifier.verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
+        ) {
+            // ISI FORM DITAMBAHKAN DI SINI (commit 23 s.d. 28)
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
+        }
+    }
+
+    // DIALOG TANGGAL DITAMBAHKAN DI SINI (commit 29)
 }
